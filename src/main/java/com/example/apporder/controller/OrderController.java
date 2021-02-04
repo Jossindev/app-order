@@ -1,31 +1,24 @@
 package com.example.apporder.controller;
 
 import com.example.apporder.model.Order;
-import com.example.apporder.repository.OrderRepository;
 import com.example.apporder.service.OrderService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping(value = "/orders")
+@RequestMapping(value = "/service2/orders")
 public class OrderController {
-    private final OrderRepository orderRepository;
     private final OrderService orderService;
-
-//    @PostMapping("/add")
-//    public Order save(@RequestBody Order order) {
-//        return orderRepository.save(order);
-//    }
 
     @PostMapping("/add")
     public Order save() {
-        return orderRepository.save(new Order());
+        return orderService.save(new Order());
     }
 
     @DeleteMapping("/{id}")
     public void remove(@PathVariable Long id) {
-        orderRepository.deleteById(id);
+        orderService.deleteById(id);
     }
 
     @PutMapping("/{id}/addToOrder")

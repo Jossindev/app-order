@@ -3,6 +3,7 @@ package com.example.apporder.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -18,9 +19,11 @@ public class Product {
 
     private String name;
 
-    private int price;
-
-    @ManyToOne
+    @ManyToMany
     @JoinColumn(name = "order_id")
-    private Order order;
+    private List<Order> order;
+
+    public Product(String name) {
+        this.name = name;
+    }
 }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping(value = "/products")
+@RequestMapping(value = "/service2/products")
 public class ProductController {
     private final ProductService productService;
 
@@ -18,5 +18,4 @@ public class ProductController {
     public Product getOne(@PathVariable Long id) {
         return productService.getOneProduct(id);
     }
-
 }

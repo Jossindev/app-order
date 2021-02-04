@@ -10,13 +10,17 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode(of = "orderId")
-@Entity(name = "myOrder")
+@Entity(name = "customOrder")
 public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderId;
 
-    @OneToMany(mappedBy = "order")
+    @ManyToMany(mappedBy = "order")
     private List<Product> products;
+
+    public Order(List<Product> products) {
+        this.products = products;
+    }
 }

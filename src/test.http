@@ -1,0 +1,11 @@
+###
+POST http://localhost:8081/service2/orders/add
+
+###
+DELETE http://localhost:8081/service2/orders/3
+
+###
+PUT http://localhost:8081/service2/orders/1/addToOrder?productId=1
+
+###
+DELETE http://localhost:8081/service2/orders/1/deleteFromOrder?productId=1
