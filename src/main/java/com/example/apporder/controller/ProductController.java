@@ -2,13 +2,13 @@ package com.example.apporder.controller;
 
 import com.example.apporder.model.Product;
 import com.example.apporder.service.ProductService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @RestController
 @RequestMapping(value = "/service2/products")
 public class ProductController {
@@ -16,6 +16,6 @@ public class ProductController {
 
     @GetMapping("/{id}")
     public Product getOne(@PathVariable Long id) {
-        return productService.getOneProduct(id);
+        return productService.getProduct(id);
     }
 }

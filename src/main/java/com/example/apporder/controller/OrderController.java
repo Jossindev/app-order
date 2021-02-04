@@ -2,10 +2,10 @@ package com.example.apporder.controller;
 
 import com.example.apporder.model.Order;
 import com.example.apporder.service.OrderService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @RestController
 @RequestMapping(value = "/service2/orders")
 public class OrderController {

@@ -1,5 +1,6 @@
 package com.example.apporder.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
@@ -7,10 +8,11 @@ import java.util.List;
 
 @Getter
 @Setter
+@AllArgsConstructor
 @NoArgsConstructor
-@ToString(exclude = "order")
 @EqualsAndHashCode(of = "productId")
-@Entity
+@Entity(name = "products")
+@JsonIgnoreProperties({"orders"})
 public class Product {
 
     @Id
@@ -19,11 +21,14 @@ public class Product {
 
     private String name;
 
-    @ManyToMany
-    @JoinColumn(name = "order_id")
-    private List<Order> order;
+    @ManyToMany(mappedBy = "products")
+    private List<Order> orders;
 
-    public Product(String name) {
-        this.name = name;
+    @Override
+    public String toString() {
+        return "Product{" +
+                "productId=" + productId +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
