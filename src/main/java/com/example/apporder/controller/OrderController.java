@@ -12,6 +12,6 @@ public class OrderController {
     @ResponseBody
     @GetMapping
     public String orders() {
-        return "fff";
+        return "free";
     }
 }
