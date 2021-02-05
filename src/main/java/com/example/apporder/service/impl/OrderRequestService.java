@@ -15,7 +15,7 @@ public class OrderRequestService {
     @Value("${http.api2.order}")
     private String orderUrl;
 
-    public Order saveOrder() {
+    public Order createOrder() {
         uri = checkCorrectURISyntax(orderUrl + "add");
         return template.postForObject(uri, new Order(), Order.class);
     }
@@ -26,13 +26,18 @@ public class OrderRequestService {
     }
 
     public void addProductToOrder(Long orderId, Long productId) {
-        uri = checkCorrectURISyntax(orderUrl + orderId + "/addToOrder?productId=" + productId);
+        uri = checkCorrectURISyntax(orderUrl + orderId + "/addToOrder/" + productId);
         template.put(uri, Order.class);
     }
 
     public void deleteProduct(Long orderId, Long productId) {
-        uri = checkCorrectURISyntax(orderUrl + orderId + "/deleteFromOrder?productId=" + productId);
+        uri = checkCorrectURISyntax(orderUrl + orderId + "/deleteFromOrder/" + productId);
         template.delete(uri);
+    }
+
+    public void sentProduct(Long orderId) {
+        uri = checkCorrectURISyntax(orderUrl + orderId + "/sent");
+        template.put(uri, Order.class);
     }
 
     private URI checkCorrectURISyntax(String url) {

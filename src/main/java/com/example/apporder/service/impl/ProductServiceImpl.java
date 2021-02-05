@@ -14,7 +14,7 @@ import javax.persistence.EntityNotFoundException;
 public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
 
-    @Cacheable("orders")
+    @Cacheable("products")
     public Product getProduct(Long productId) {
         return productRepository.findById(productId)
                 .orElseThrow(() -> new EntityNotFoundException("Product not found by id: " + productId)); // add text to properties

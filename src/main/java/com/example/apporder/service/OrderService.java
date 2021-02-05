@@ -11,4 +11,5 @@ public interface OrderService {
 
     Order deleteProduct(Long orderId, Long productId);
 
+    Order sent(Long orderId);
 }

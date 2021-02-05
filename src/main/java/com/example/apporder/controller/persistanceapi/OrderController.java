@@ -21,13 +21,19 @@ public class OrderController {
         orderService.deleteById(id);
     }
 
-    @PutMapping("/{id}/addToOrder")
-    public Order addProductToOrder(@PathVariable Long id, @RequestParam Long productId) {
+    @PutMapping("/{id}/addToOrder/{productId}")
+    public Order addProductToOrder(@PathVariable Long id, @PathVariable Long productId) {
         return orderService.addProduct(id, productId);
     }
 
-    @DeleteMapping("/{id}/deleteFromOrder")
-    public Order deleteProduct(@PathVariable Long id, @RequestParam Long productId) {
+    @DeleteMapping("/{id}/deleteFromOrder/{productId}")
+    public Order deleteProduct(@PathVariable Long id, @PathVariable Long productId) {
         return orderService.deleteProduct(id, productId);
     }
+
+    @PutMapping("/{id}/sent")
+    public Order sentOrder(@PathVariable Long id) {
+        return orderService.sent(id);
+    }
 }
+

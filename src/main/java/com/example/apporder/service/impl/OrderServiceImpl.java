@@ -2,6 +2,7 @@ package com.example.apporder.service.impl;
 
 import com.example.apporder.model.Order;
 import com.example.apporder.model.Product;
+import com.example.apporder.model.Status;
 import com.example.apporder.repository.OrderRepository;
 import com.example.apporder.repository.ProductRepository;
 import com.example.apporder.service.OrderService;
@@ -48,6 +49,16 @@ public class OrderServiceImpl implements OrderService {
                 .orElseThrow(() -> new EntityNotFoundException("Product not found by id: " + productId));
 
         order.getProducts().remove(product);
+        return orderRepository.save(order);
+    }
+
+    @Transactional
+    public Order sent(Long orderId) {
+        Order order = orderRepository
+                .findById(orderId)
+                .orElseThrow(() -> new EntityNotFoundException("Order not found by id: " + orderId));
+
+        order.setStatus(Status.SENT);
         return orderRepository.save(order);
     }
 }
