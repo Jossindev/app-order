@@ -1,4 +1,4 @@
-package com.example.apporder.controller;
+package com.example.apporder.controller.persistanceapi;
 
 import com.example.apporder.model.Product;
 import com.example.apporder.service.ProductService;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping(value = "/service2/products")
+@RequestMapping(value = "/api2/products")
 public class ProductController {
     private final ProductService productService;
 

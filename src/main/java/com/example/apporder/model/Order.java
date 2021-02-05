@@ -7,17 +7,17 @@ import java.util.List;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "orderId")
 @Entity(name = "custom_orders")
+@ToString
 public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderId;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST})
+    @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(
             name = "order_has_products",
             joinColumns = {@JoinColumn(name = "order_id")},
@@ -25,11 +25,10 @@ public class Order {
     )
     private List<Product> products;
 
-    @Override
-    public String toString() {
-        return "Order{" +
-                "orderId=" + orderId +
-                ", products=" + products +
-                '}';
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
+    public Order() {
+        this.status = Status.NOT_SENT;
     }
 }

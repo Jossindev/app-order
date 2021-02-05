@@ -11,8 +11,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "productId")
-@Entity(name = "products")
+@ToString(exclude = "orders")
 @JsonIgnoreProperties({"orders"})
+@Entity(name = "products")
 public class Product {
 
     @Id
@@ -23,12 +24,4 @@ public class Product {
 
     @ManyToMany(mappedBy = "products")
     private List<Order> orders;
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "productId=" + productId +
-                ", name='" + name + '\'' +
-                '}';
-    }
 }

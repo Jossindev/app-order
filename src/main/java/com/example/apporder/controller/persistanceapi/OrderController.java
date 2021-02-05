@@ -1,4 +1,4 @@
-package com.example.apporder.controller;
+package com.example.apporder.controller.persistanceapi;
 
 import com.example.apporder.model.Order;
 import com.example.apporder.service.OrderService;
@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping(value = "/service2/orders")
+@RequestMapping(value = "/api2/orders")
 public class OrderController {
     private final OrderService orderService;
 
     @PostMapping("/add")
-    public Order save() {
-        return orderService.save(new Order());
+    public Order save(@RequestBody Order order) {
+        return orderService.save(order);
     }
 
     @DeleteMapping("/{id}")
