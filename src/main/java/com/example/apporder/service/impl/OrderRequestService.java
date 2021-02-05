@@ -12,28 +12,34 @@ import java.net.URISyntaxException;
 public class OrderRequestService {
     private final RestTemplate template = new RestTemplate();
     private URI uri;
-    @Value("${http.post.api2.order.save}")
-    private String saveOrderUrl;
-    @Value("${http.delete.api2.order}")
-    private String deleteOrderUrl;
+    @Value("${http.api2.order}")
+    private String orderUrl;
 
     public Order saveOrder() {
-        try {
-            uri = new URI(saveOrderUrl);
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
-
+        uri = checkCorrectURISyntax(orderUrl + "add");
         return template.postForObject(uri, new Order(), Order.class);
     }
 
     public void deleteOrder(Long orderId) {
-        try {
-            uri = new URI(deleteOrderUrl + orderId);
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
-
+        uri = checkCorrectURISyntax(orderUrl + orderId);
         template.delete(uri);
+    }
+
+    public void addProductToOrder(Long orderId, Long productId) {
+        uri = checkCorrectURISyntax(orderUrl + orderId + "/addToOrder?productId=" + productId);
+        template.put(uri, Order.class);
+    }
+
+    public void deleteProduct(Long orderId, Long productId) {
+        uri = checkCorrectURISyntax(orderUrl + orderId + "/deleteFromOrder?productId=" + productId);
+        template.delete(uri);
+    }
+
+    private URI checkCorrectURISyntax(String url) {
+        try {
+            return new URI(url);
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);//?????
+        }
     }
 }

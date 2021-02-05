@@ -1,3 +1,4 @@
+###
 ### Database api
 ###
 POST http://localhost:8081/api2/orders/add
@@ -14,12 +15,20 @@ DELETE http://localhost:8081/api2/orders/1/deleteFromOrder?productId=1
 ###
 GET http://localhost:8081/api2/products/1
 
+###
 ### Main api
 ###
-GET http://localhost:8081/api1/products/get/1
+GET http://localhost:8081/api1/products/get/3
 
 ###
 POST http://localhost:8081/api1/orders/add
 
 ###
-DELETE http://localhost:8081/api1/orders/delete/5
+DELETE http://localhost:8081/api1/orders/delete/1
+###  {{id}}} ???
+
+###
+PUT http://localhost:8081/api1/orders/3/addToOrder?productId=3
+
+###
+DELETE http://localhost:8081/api1/orders/3/deleteFromOrder?productId=3

@@ -21,4 +21,14 @@ public class MainOrderController {
         requestService.deleteOrder(id);
     }
 
+    @PutMapping("/{id}/addToOrder")
+    public void addProductToOrder(@PathVariable Long id, @RequestParam Long productId) {
+        requestService.addProductToOrder(id, productId);
+    }
+
+    @DeleteMapping("/{id}/deleteFromOrder")
+    public void deleteProductFromOrder(@PathVariable Long id, @RequestParam Long productId) {
+        requestService.deleteProduct(id, productId);
+    }
+
 }
