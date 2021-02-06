@@ -17,6 +17,10 @@ public class ProductServiceImpl implements ProductService {
     @Cacheable("products")
     public Product getProduct(Long productId) {
         return productRepository.findById(productId)
-                .orElseThrow(() -> new EntityNotFoundException("Product not found by id: " + productId)); // add text to properties
+                .orElseThrow(() -> new EntityNotFoundException("Product not found by id: " + productId));
+    }
+
+    public Product save(Product product) {
+       return productRepository.save(product);
     }
 }

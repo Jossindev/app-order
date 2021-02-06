@@ -1,7 +1,10 @@
 ###
 ### Database api
-###
+### +RequestBody
 POST http://localhost:8081/api2/orders/add
+
+### +RequestBody
+POST http://localhost:8081/api2/products/add
 
 ###
 DELETE http://localhost:8081/api2/orders/1

@@ -3,16 +3,18 @@ package com.example.apporder.controller.persistanceapi;
 import com.example.apporder.model.Product;
 import com.example.apporder.service.ProductService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
 @RequestMapping(value = "/api2/products")
 public class ProductController {
     private final ProductService productService;
+
+    @PostMapping("/add")
+    public Product save(@RequestBody Product product) {
+        return productService.save(product);
+    }
 
     @GetMapping("/{id}")
     public Product getOne(@PathVariable Long id) {
