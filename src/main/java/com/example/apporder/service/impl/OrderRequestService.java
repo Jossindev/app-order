@@ -7,6 +7,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 
 @Service
 public class OrderRequestService {
@@ -18,6 +19,11 @@ public class OrderRequestService {
     public Order createOrder() {
         uri = checkCorrectURISyntax(orderUrl + "add");
         return template.postForObject(uri, new Order(), Order.class);
+    }
+
+    public List<Order> findOrders() {
+        uri = checkCorrectURISyntax(orderUrl + "findAll");
+        return template.getForObject(uri, List.class);
     }
 
     public void deleteOrder(Long orderId) {
@@ -35,7 +41,7 @@ public class OrderRequestService {
         template.delete(uri);
     }
 
-    public void sentProduct(Long orderId) {
+    public void sentOrder(Long orderId) {
         uri = checkCorrectURISyntax(orderUrl + orderId + "/sent");
         template.put(uri, Order.class);
     }

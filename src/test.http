@@ -19,6 +19,9 @@ DELETE http://localhost:8081/api2/orders/8/deleteFromOrder/3
 GET http://localhost:8081/api2/products/3
 
 ###
+GET http://localhost:8081/api2/orders/findAll
+
+###
 ### Main api
 ###
 GET http://localhost:8081/api1/products/get/3
@@ -31,10 +34,13 @@ DELETE http://localhost:8081/api1/orders/delete/10
 ###  {{id}}} ???
 
 ###
-PUT http://localhost:8081/api1/orders/8/addToOrder/3
+PUT http://localhost:8081/api1/orders/8/addToOrder/4
 
 ###
 DELETE http://localhost:8081/api1/orders/8/deleteFromOrder/3
 
 ###
 PUT http://localhost:8081/api1/orders/9/sent
+
+###
+GET http://localhost:8081/api1/orders/findAll

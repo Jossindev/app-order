@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -60,5 +62,13 @@ public class OrderServiceImpl implements OrderService {
 
         order.setStatus(Status.SENT);
         return orderRepository.save(order);
+    }
+
+    public List<Order> findAll() {
+        List<Order> orders = new ArrayList<>();
+        for (Order order : orderRepository.findAll()) {
+            orders.add(order);
+        }
+        return orders;
     }
 }

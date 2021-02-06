@@ -2,6 +2,8 @@ package com.example.apporder.service;
 
 import com.example.apporder.model.Order;
 
+import java.util.List;
+
 public interface OrderService {
     Order save(Order order);
 
@@ -12,4 +14,6 @@ public interface OrderService {
     Order deleteProduct(Long orderId, Long productId);
 
     Order sent(Long orderId);
+
+    List<Order> findAll();
 }

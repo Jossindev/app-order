@@ -5,6 +5,8 @@ import com.example.apporder.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping(value = "/api2/orders")
@@ -34,6 +36,11 @@ public class OrderController {
     @PutMapping("/{id}/sent")
     public Order sentOrder(@PathVariable Long id) {
         return orderService.sent(id);
+    }
+
+    @GetMapping("/findAll")
+    public List<Order> findAll() {
+        return orderService.findAll();
     }
 }
 

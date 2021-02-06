@@ -5,6 +5,8 @@ import com.example.apporder.service.impl.OrderRequestService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api1/orders")
@@ -21,6 +23,11 @@ public class MainOrderController {
         requestService.deleteOrder(id);
     }
 
+    @PutMapping("/{id}/sent")
+    public void sentOrder(@PathVariable Long id) {
+        requestService.sentOrder(id);
+    }
+
     @PutMapping("/{id}/addToOrder/{productId}")
     public void addProductToOrder(@PathVariable Long id, @PathVariable Long productId) {
         requestService.addProductToOrder(id, productId);
@@ -31,9 +38,8 @@ public class MainOrderController {
         requestService.deleteProduct(id, productId);
     }
 
-    @PutMapping("/{id}/sent")
-    public void deleteProductFromOrder(@PathVariable Long id) {
-        requestService.sentProduct(id);
+    @GetMapping("/findAll")
+    public List<Order> findAllOrders() {
+        return requestService.findOrders();
     }
-
 }
