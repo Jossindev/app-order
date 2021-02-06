@@ -1,0 +1,31 @@
+package com.example.apporder.controller;
+
+import com.example.apporder.controller.mainapi.MainProductController;
+import com.example.apporder.service.impl.ProductRequestService;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Spy;
+import org.mockito.junit.MockitoJUnitRunner;
+
+import static org.mockito.Mockito.verify;
+
+@RunWith(MockitoJUnitRunner.class)
+public class MainProductControllerTest {
+    private static final Long PRODUCT_ID = 1L;
+
+    @Spy
+    @InjectMocks
+    private MainProductController testInstance;
+
+    @Mock
+    private ProductRequestService productService;
+
+    @Test
+    public void shouldInvokeCreateOrderMethod_whenAddNewOrder() {
+        testInstance.getProduct(PRODUCT_ID);
+
+        verify(productService).getProduct(PRODUCT_ID);
+    }
+}

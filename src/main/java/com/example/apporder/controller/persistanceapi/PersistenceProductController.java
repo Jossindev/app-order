@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping(value = "/api2/products")
-public class ProductController {
+public class PersistenceProductController {
     private final ProductService productService;
 
     @PostMapping("/add")

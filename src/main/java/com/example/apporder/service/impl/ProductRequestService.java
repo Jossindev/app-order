@@ -11,9 +11,9 @@ import java.net.URISyntaxException;
 @Service
 public class ProductRequestService {
     private final RestTemplate template = new RestTemplate();
-    private URI uri;
     @Value("${http.get.api2.product}")
     private String getProductUrl;
+    private URI uri;
 
     public Product getProduct(Long productId) {
         try {

@@ -2,6 +2,7 @@ package com.example.apporder.service.impl;
 
 import com.example.apporder.model.Order;
 import com.example.apporder.model.Product;
+import com.example.apporder.model.Status;
 import com.example.apporder.repository.OrderRepository;
 import com.example.apporder.repository.ProductRepository;
 import org.junit.Before;
@@ -78,7 +79,7 @@ public class OrderServiceTest {
         when(productRepository.findById(PRODUCT_ID)).thenReturn(Optional.of(product));
         testInstance.addProduct(ORDER_ID, PRODUCT_ID);
 
-        assertThat(productsToPerform.size()).isEqualTo(4);
+        assertThat(productsToPerform.size()).isEqualTo(3);
 
         verify(orderRepository).save(order);
     }
@@ -89,8 +90,18 @@ public class OrderServiceTest {
         when(productRepository.findById(PRODUCT_ID)).thenReturn(Optional.of(product));
         testInstance.deleteProduct(ORDER_ID, PRODUCT_ID);
 
-        assertThat(productsToPerform.size()).isEqualTo(2);
+        assertThat(productsToPerform.size()).isEqualTo(3);
 
+        verify(orderRepository).save(order);
+    }
+
+    @Test
+    public void shouldUpdateStatusToSent() {
+        when(orderRepository.findById(ORDER_ID)).thenReturn(Optional.of(order));
+
+        testInstance.sent(ORDER_ID);
+
+        verify(order).setStatus(Status.SENT);
         verify(orderRepository).save(order);
     }
 }

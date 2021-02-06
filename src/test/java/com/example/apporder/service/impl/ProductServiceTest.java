@@ -26,23 +26,32 @@ public class ProductServiceTest {
     private ProductServiceImpl testInstance;
 
     @Mock
-    private ProductRepository repository;
+    private ProductRepository productRepository;
 
     @Mock
     Product product;
 
     @Test(expected = EntityNotFoundException.class)
     public void shouldThrowEntityNotFoundException_whenProductNotFoundById() {
-        when(repository.findById(PRODUCT_ID)).thenThrow(EntityNotFoundException.class);
+        when(productRepository.findById(PRODUCT_ID)).thenThrow(EntityNotFoundException.class);
 
         testInstance.getProduct(PRODUCT_ID);
     }
 
     @Test
     public void shouldGetProductById() {
-        when(repository.findById(PRODUCT_ID)).thenReturn(Optional.of(product));
+        when(productRepository.findById(PRODUCT_ID)).thenReturn(Optional.of(product));
 
         Product actual = testInstance.getProduct(PRODUCT_ID);
+
+        assertThat(actual).isSameAs(product);
+    }
+
+    @Test
+    public void shouldReturnSavedProduct() {
+        when(productRepository.save(product)).thenReturn(product);
+
+        Product actual = testInstance.save(product);
 
         assertThat(actual).isSameAs(product);
     }
