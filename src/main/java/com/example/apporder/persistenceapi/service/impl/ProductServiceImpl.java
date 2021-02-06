@@ -1,8 +1,8 @@
-package com.example.apporder.service.impl;
+package com.example.apporder.persistenceapi.service.impl;
 
 import com.example.apporder.model.Product;
-import com.example.apporder.repository.ProductRepository;
-import com.example.apporder.service.ProductService;
+import com.example.apporder.persistenceapi.repository.ProductRepository;
+import com.example.apporder.persistenceapi.service.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;

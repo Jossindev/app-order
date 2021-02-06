@@ -12,13 +12,13 @@ POST http://localhost:8081/api2/products/add
 DELETE http://localhost:8081/api2/orders/1
 
 ###
-PUT http://localhost:8081/api2/orders/8/addToOrder/3
+PUT http://localhost:8081/api2/orders/1/addToOrder/1
 
 ###
-DELETE http://localhost:8081/api2/orders/8/deleteFromOrder/3
+DELETE http://localhost:8081/api2/orders/1/deleteFromOrder/1
 
 ###
-GET http://localhost:8081/api2/products/3
+GET http://localhost:8081/api2/products/1
 
 ###
 GET http://localhost:8081/api2/orders/findAll
@@ -28,22 +28,22 @@ GET http://localhost:8081/api2/orders/findAll
 ###
 
 ###
-GET http://localhost:8081/api1/products/get/3
+GET http://localhost:8081/api1/products/get/1
 
 ###
 POST http://localhost:8081/api1/orders/add
 
 ###
-DELETE http://localhost:8081/api1/orders/delete/10
+DELETE http://localhost:8081/api1/orders/delete/1
 
 ###
-PUT http://localhost:8081/api1/orders/9/sent
+PUT http://localhost:8081/api1/orders/1/sent
 
 ###
-PUT http://localhost:8081/api1/orders/8/addToOrder/4
+PUT http://localhost:8081/api1/orders/1/addToOrder/1
 
 ###
-DELETE http://localhost:8081/api1/orders/8/deleteFromOrder/3
+DELETE http://localhost:8081/api1/orders/1/deleteFromOrder/1
 
 ###
 GET http://localhost:8081/api1/orders/findAll

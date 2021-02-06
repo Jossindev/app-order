@@ -1,11 +1,11 @@
-package com.example.apporder.service.impl;
+package com.example.apporder.persistenceapi.service.impl;
 
 import com.example.apporder.model.Order;
 import com.example.apporder.model.Product;
 import com.example.apporder.model.Status;
-import com.example.apporder.repository.OrderRepository;
-import com.example.apporder.repository.ProductRepository;
-import com.example.apporder.service.OrderService;
+import com.example.apporder.persistenceapi.repository.OrderRepository;
+import com.example.apporder.persistenceapi.repository.ProductRepository;
+import com.example.apporder.persistenceapi.service.OrderService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

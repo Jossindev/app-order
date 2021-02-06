@@ -1,8 +1,8 @@
 package com.example.apporder.service.impl;
 
-import com.example.apporder.model.Order;
 import com.example.apporder.model.Product;
-import com.example.apporder.repository.ProductRepository;
+import com.example.apporder.persistenceapi.service.impl.ProductServiceImpl;
+import com.example.apporder.persistenceapi.repository.ProductRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

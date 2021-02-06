@@ -1,7 +1,7 @@
-package com.example.apporder.controller.mainapi;
+package com.example.apporder.mainapi.controller;
 
 import com.example.apporder.model.Product;
-import com.example.apporder.service.impl.ProductRequestService;
+import com.example.apporder.mainapi.service.ProductRequestService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

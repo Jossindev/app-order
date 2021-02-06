@@ -1,12 +1,12 @@
-package com.example.apporder.service.impl;
+package com.example.apporder.mainapi.service;
 
 import com.example.apporder.model.Order;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.List;
 
 @Service
@@ -17,40 +17,37 @@ public class OrderRequestService {
     private String orderUrl;
 
     public Order createOrder() {
-        uri = checkCorrectURISyntax(orderUrl + "add");
+        uri = returnCorrectUri(orderUrl + "add");
         return template.postForObject(uri, new Order(), Order.class);
     }
 
     public List<Order> findOrders() {
-        uri = checkCorrectURISyntax(orderUrl + "findAll");
+        uri = returnCorrectUri(orderUrl + "findAll");
         return template.getForObject(uri, List.class);
     }
 
     public void deleteOrder(Long orderId) {
-        uri = checkCorrectURISyntax(orderUrl + orderId);
+        uri = returnCorrectUri(orderUrl + orderId);
         template.delete(uri);
     }
 
     public void addProductToOrder(Long orderId, Long productId) {
-        uri = checkCorrectURISyntax(orderUrl + orderId + "/addToOrder/" + productId);
+        uri = returnCorrectUri(orderUrl + orderId + "/addToOrder/" + productId);
         template.put(uri, Order.class);
     }
 
     public void deleteProduct(Long orderId, Long productId) {
-        uri = checkCorrectURISyntax(orderUrl + orderId + "/deleteFromOrder/" + productId);
+        uri = returnCorrectUri(orderUrl + orderId + "/deleteFromOrder/" + productId);
         template.delete(uri);
     }
 
     public void sentOrder(Long orderId) {
-        uri = checkCorrectURISyntax(orderUrl + orderId + "/sent");
+        uri = returnCorrectUri(orderUrl + orderId + "/sent");
         template.put(uri, Order.class);
     }
 
-    private URI checkCorrectURISyntax(String url) {
-        try {
+    @SneakyThrows
+    private URI returnCorrectUri(String url) {
             return new URI(url);
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);//?????
-        }
     }
 }

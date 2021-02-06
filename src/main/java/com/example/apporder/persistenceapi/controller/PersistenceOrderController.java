@@ -1,7 +1,7 @@
-package com.example.apporder.controller.persistanceapi;
+package com.example.apporder.persistenceapi.controller;
 
 import com.example.apporder.model.Order;
-import com.example.apporder.service.OrderService;
+import com.example.apporder.persistenceapi.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

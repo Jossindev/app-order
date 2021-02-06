@@ -1,4 +1,4 @@
-package com.example.apporder.service.impl;
+package com.example.apporder.mainapi.service;
 
 import com.example.apporder.model.Product;
 import org.springframework.beans.factory.annotation.Value;

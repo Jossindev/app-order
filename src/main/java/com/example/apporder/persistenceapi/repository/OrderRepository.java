@@ -1,4 +1,4 @@
-package com.example.apporder.repository;
+package com.example.apporder.persistenceapi.repository;
 
 import com.example.apporder.model.Order;
 import org.springframework.data.repository.CrudRepository;

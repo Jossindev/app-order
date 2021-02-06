@@ -1,7 +1,7 @@
 package com.example.apporder.controller;
 
-import com.example.apporder.controller.mainapi.MainOrderController;
-import com.example.apporder.service.impl.OrderRequestService;
+import com.example.apporder.mainapi.controller.MainOrderController;
+import com.example.apporder.mainapi.service.OrderRequestService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

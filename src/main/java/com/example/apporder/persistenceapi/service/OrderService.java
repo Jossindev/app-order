@@ -1,4 +1,4 @@
-package com.example.apporder.service;
+package com.example.apporder.persistenceapi.service;
 
 import com.example.apporder.model.Order;
 
