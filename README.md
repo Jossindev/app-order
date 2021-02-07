@@ -20,7 +20,8 @@
 
 
 
-#How to run
+# How to run
+
 1.docker build --build-arg JAR_FILE=build/libs/*.jar -t order-api-container .
 
 2.docker-compose up -d
