@@ -2,7 +2,17 @@ version: "3"
 
 services:
   main:
-    image: order-api-docker
+    image: 'order-api-docker:latest'
+    container_name: app
+    build:
+      context: .
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/exercise_db?characterEncoding=utf8&serverTimezone=UTC
+      - SPRING_DATASOURCE_USERNAME=compose-root
+      - SPRING_DATASOURCE_PASSWORD=compose-1111
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
     ports:
       - 8081:8081
     networks:
@@ -24,14 +34,13 @@ services:
     networks:
       - dbNet
 
-
 volumes:
   db_volume:
     name: my-sql-volume
 
 networks:
-  mainNet:
-    name: main.net
   dbNet:
     name: db.net
+  mainNet:
+    name: main.net
 
