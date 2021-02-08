@@ -1,7 +1,7 @@
 package com.example.apporder.controller;
 
 import com.example.apporder.mainapi.controller.MainProductController;
-import com.example.apporder.mainapi.service.ProductRequestService;
+import com.example.apporder.mainapi.service.impl.ProductRequestServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -20,7 +20,7 @@ public class MainProductControllerTest {
     private MainProductController testInstance;
 
     @Mock
-    private ProductRequestService productService;
+    private ProductRequestServiceImpl productService;
 
     @Test
     public void shouldInvokeCreateOrderMethod_whenAddNewOrder() {
